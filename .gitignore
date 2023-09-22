@@ -1,3 +1,9 @@
 dataset
 __pycache__
 __MACOSX
+myenv
+.idea
+.idea/*
+venv
+.ipynb_checkpoints
+.DS_Store
