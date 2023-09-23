@@ -1,22 +1,15 @@
 import os
 from datetime import datetime
-import mysql.connector as mysql
-
+from DbConnector import DbConnector
 
 class DbMaker:
     DATASET_PATH = "dataset/"
 
-    def __init__(self, HOST="localhost", DATABASE="db", USER="root", PASSWORD="root"):
-        self.connect_to_database(HOST, DATABASE, USER, PASSWORD)
+    def __init__(self):
+        self.db_connector = DbConnector()
+        self.connection = self.db_connector.db_connection
+        self.cursor = self.db_connector.cursor
         self.labels = self.read_labels()
-
-    def connect_to_database(self, HOST, DATABASE, USER, PASSWORD):
-        try:
-            self.connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD, port=3306)
-            self.cursor = self.connection.cursor()
-            print(f"Established connection to database: {self.connection.get_server_info()}")
-        except Exception as e:
-            print(f"ERROR: Failed to connect to db: {e}")
 
     def read_labels(self):
         return open(self.DATASET_PATH + "labeled_ids.txt", "r").read().split("\n")
