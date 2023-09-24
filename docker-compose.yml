@@ -8,4 +8,4 @@ services:
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=db
+      - MYSQL_DATABASE=strava_db
