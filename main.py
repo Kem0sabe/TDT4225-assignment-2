@@ -1,5 +1,6 @@
 from Queries import Queries
 
+
 def main():
     queries = Queries()
 
@@ -49,10 +50,6 @@ def main():
             queries.task_12()
         else:
             print("Invalid task, try again")
-
-
-
-
 
 
 if __name__ == "__main__":
