@@ -2,6 +2,18 @@
 
 VENV_NAME=myenv
 
+ifeq ($(OS),Windows_NT)
+    SYSTEM=Windows_NT
+    VENV_ACTIVATE=.\\$(VENV_NAME)\\Scripts\\activate
+    PYTHON=$(VENV_NAME)\\Scripts\\python.exe
+    PIP=$(VENV_NAME)\\Scripts\\pip.exe
+else
+    SYSTEM=$(shell uname -s)
+    VENV_ACTIVATE=./$(VENV_NAME)/bin/activate
+    PYTHON=$(VENV_NAME)/bin/python3
+    PIP=$(VENV_NAME)/bin/pip3
+endif
+
 # Create a Python virtual environment
 create-env: ## Create a Python virtual environment
 	@echo "Creating virtual environment..."
@@ -13,7 +25,7 @@ remove-env: ## Remove the Python virtual environment
 	rm -rf $(VENV_NAME)
 
 # Run main.py
-queries: ## Run the main script
+queries: start ## Run the main script
 	@echo "Running main.py..."
 	$(VENV_NAME)/bin/python3 main.py
 
