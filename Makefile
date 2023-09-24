@@ -12,6 +12,11 @@ remove-env: ## Remove the Python virtual environment
 	@echo "Removing virtual environment..."
 	rm -rf $(VENV_NAME)
 
+# Run main.py
+queries: ## Run the main script
+	@echo "Running main.py..."
+	$(VENV_NAME)/bin/python3 main.py
+
 # Start the database using Docker Compose
 db: ## Start the database using Docker Compose
 	@echo "Starting the database..."
