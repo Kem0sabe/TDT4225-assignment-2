@@ -156,8 +156,12 @@ class Queries:
 
         return results
 
-    def task_idk2(self):
-        print("Task idk2 - Number of users who have used more than one type of transportation:")
+    def task_7(self):
+        self._task_7a()
+        self._task_7b()
+
+    def _task_7a(self):
+        print("Task 7a -  Find the number of users that have started an activity in one day and ended the activity the next day:")
         self.cursor.execute("""
         SELECT 
             COUNT(DISTINCT user_id) 
@@ -167,13 +171,13 @@ class Queries:
 
         results = self.cursor.fetchall()
 
-        print(f"Number of users who have used more than one type of transportation: {results[0][0]}")
+        print(f"Amount: {results[0][0]}")
         print()
 
         return results
 
-    def task_idk(self):
-        print("Task idk - Users who have used more than one type of transportation:")
+    def _task_7b(self):
+        print("Task 7b - List the transportation mode, user id and duration for these activities")
         self.cursor.execute("""
         SELECT 
             user_id, 
@@ -185,12 +189,17 @@ class Queries:
 
         results = self.cursor.fetchall()
 
-        print("Users who have used more than one type of transportation:")
+        print("List the transportation mode, user id and duration for these activities:")
         for result in results:
             print(f"User: {result[0]}, Mode: {result[1]}, Duration: {result[2]}")
         print()
 
         return results
+
+    def task_8(self):
+        print("Task 8 - Find the number of users which have been close to each other in time and space.\n"
+              "Close is defined as the same space (50 meters) and for the same half minute (30"
+              "seconds)")
 
     def task_9(self):
         print("Task 9 - Top 15 users who have gained the most altitude:")
@@ -253,3 +262,12 @@ class Queries:
         print()
 
         return results
+
+    def task_11(self):
+        print("Task 11 -  Find all users who have invalid activities, and the number of invalid activities per user:")
+
+
+
+    def task_12(self):
+        print("Task 12 - Find all users who have registered transportation_mode and their most used transportation_mode:")
+

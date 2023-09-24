@@ -17,8 +17,12 @@ def main():
             queries.task_4()
             queries.task_5()
             queries.task_6()
+            queries.task_7()
+            queries.task_8()
             queries.task_9()
             queries.task_10()
+            queries.task_11()
+            queries.task_12()
         elif task == "1":
             queries.task_1()
         elif task == "2":
