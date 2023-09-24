@@ -34,7 +34,7 @@ setup: create-env ## Run the setup script
 	@echo "Setup completed."
 
 # Start all services
-start: db
+start: db ## Start all services
 	@echo "Pausing for the database to initialize..."
 	sleep 10 # Wait for 10 seconds
 	$(MAKE) install
