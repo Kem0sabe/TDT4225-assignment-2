@@ -3,7 +3,7 @@ import mysql.connector as mysql
 class DbConnector:
     def __init__(self,
                  HOST='localhost',
-                 DATABASE='db',
+                 DATABASE='strava_db',
                  USER='root',
                  PASSWORD='root'):
         self.connect_to_database(HOST, DATABASE, USER, PASSWORD)
