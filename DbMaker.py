@@ -2,7 +2,8 @@ import os
 from datetime import datetime
 from DbConnector import DbConnector
 
-class DbMaker():
+
+class DbMaker:
     DATASET_PATH = "dataset/"
 
     def __init__(self):
@@ -24,7 +25,7 @@ class DbMaker():
 
     def create_user_table(self):
         """
-        Creates the user table if it does not excist
+        Creates the user table if it does not exist
         """
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS user (
@@ -36,7 +37,7 @@ class DbMaker():
 
     def create_activity_table(self):
         """
-        Creates the activity table if it does not excist
+        Creates the activity table if it does not exist
         """
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS activity (
@@ -52,7 +53,7 @@ class DbMaker():
 
     def create_trackpoint_table(self):
         """
-        Creates the trackpoint table if it does not excist
+        Creates the trackpoint table if it does not exist
         """
         self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS trackpoint (
@@ -81,7 +82,7 @@ class DbMaker():
 
     def insert_activity_table(self, user_id, transportation_mode, start_date_time, end_date_time):
         """
-        This method insert the given paramters to the activity table
+        This method insert the given parameters to the activity table
 
         :param user_id: The user id for the person doing the activity
         :param transportation_mode: The type of transportation mode used for this activity
@@ -97,7 +98,7 @@ class DbMaker():
 
     def insert_trackpoints(self, filtered_trackpoints):
         """
-        This method insert a bulck of filtered trackpoints to the trackpoint table
+        This method insert a bulk of filtered trackpoints to the trackpoint table
 
         :param filtered_trackpoints: List of trackpoints where we have removed unrelevant info and added activity id
         """
@@ -106,7 +107,7 @@ class DbMaker():
 
     def filter_trackpoints(self, trackpoints, activity_id):
         """
-        This method filteres a bunch of trackpoits to include only relevant info and an activity id
+        This method filters a bunch of trackpoints to include only relevant info and an activity id
 
         :param trackpoints: trackpoints used to track each user by position, elevation and time
         :param activity_id: The id for the activity the trackpoint corresponds to
@@ -122,7 +123,7 @@ class DbMaker():
 
     def find_activity_type(self, id, start_time, end_time):
         """
-        This method filteres a bunch of trackpoits to include only relevant info and an activity id
+        This method filters a bunch of trackpoints to include only relevant info and an activity id
 
         :param trackpoints: trackpoints used to track each user by position, elevation and time
         :param activity_id: The id for the activity the trackpoint corresponds to
@@ -139,7 +140,7 @@ class DbMaker():
 
     def filter_and_insert_activity(self):
         """
-        This method filteres and insert activites and trackpoints to the table
+        This method filters and inserts activities and trackpoints to the table
         """
         self.cursor.execute(""" SELECT * FROM user""")
         users_tuple = self.cursor.fetchall()
@@ -164,7 +165,7 @@ class DbMaker():
 
 def read_plt(file_path):
     """
-    Reads the .plt file and formats it as the spesification in the task
+    Reads the .plt file and formats it as the specification in the task
 
     :param file_path: the .plt file path
     """
@@ -179,10 +180,11 @@ def read_plt(file_path):
 
 program = DbMaker()
 if program.connection:
+    print("Creating tables and inserting data")
+    print("This might take a while...")
+    print("Wait for the 'Done' message")
     program.create_tables()
     program.insert_user_table()
     program.filter_and_insert_activity()
     program.connection.close()
     print("Done")
-
-

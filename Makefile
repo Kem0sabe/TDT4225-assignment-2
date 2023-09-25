@@ -25,7 +25,7 @@ remove-env: ## Remove the Python virtual environment
 	rm -rf $(VENV_NAME)
 
 # Run main.py
-queries: start ## Run the main script
+queries: ## Run the queries
 	@echo "Running main.py..."
 	$(VENV_NAME)/bin/python3 main.py
 
@@ -53,7 +53,7 @@ setup: create-env ## Run the setup script
 # Start all services
 start: db ## Start all services
 	@echo "Pausing for the database to initialize..."
-	sleep 10 # Wait for 10 seconds
+	sleep 10
 	$(MAKE) install
 	$(MAKE) setup
 	@echo "Starting all services..."

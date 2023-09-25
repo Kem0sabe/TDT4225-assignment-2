@@ -2,7 +2,6 @@ from DbConnector import DbConnector
 import haversine as hs
 from tabulate import tabulate
 
-
 class Queries:
 
     def __init__(self):
@@ -11,6 +10,7 @@ class Queries:
         self.cursor = self.db_connector.cursor
 
     def task_1(self):
+        print()
         print(
             "Task 1 - How many users, activities and trackpoints are there in the dataset (after it is inserted into the database):")
         self.cursor.execute("""
@@ -25,9 +25,8 @@ class Queries:
 
         print(tabulate([*results], headers=["user_count", "activity_count", "trackpoint_count"]))
 
-        return results
-
     def task_2(self):
+        print()
         print("Task 2 - Find the average, maximum and minimum number of trackpoints per user:")
         self.cursor.execute("""
             SELECT 
@@ -49,11 +48,8 @@ class Queries:
 
         print(tabulate([*results], headers=["average_trackpoints", "minimum_trackpoints", "maximum_trackpoints"]))
 
-        print()
-
-        return results
-
     def task_3(self):
+        print()
         print("Task 3 - Find the top 15 users with the highest number of activities:")
         self.cursor.execute("""
             SELECT 
@@ -69,11 +65,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "activity_count"]))
-        print()
-
-        return results
 
     def task_4(self):
+        print()
         print("Task 4 - Find all users who have taken a bus:")
         self.cursor.execute("""
             SELECT DISTINCT user.id
@@ -85,11 +79,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id"]))
-        print()
-
-        return results
 
     def task_5(self):
+        print()
         print("Task 5 - List the top 10 users by their amount of different transportation modes:")
         self.cursor.execute("""
             SELECT 
@@ -106,11 +98,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "transportation_mode_count"]))
-        print()
-
-        return results
 
     def task_6(self):
+        print()
         print(
             "Task 6 - Find activities that are registered multiple times.\nYou should find the query even if it gives zero result:")
 
@@ -132,20 +122,17 @@ class Queries:
             print(tabulate([*results], headers=["user_id", "transportation_mode", "start_date_time", "end_date_date",
                                                 "invalid_activites"]))
             print("No activities were found that were registered multiple times.")
-            print()
-            return results
         else:
             print(tabulate([*results], headers=["user_id", "transportation_mode", "start_date_time", "end_date_date",
                                                 "invalid_activites"]))
-            print()
 
-        return results
 
     def task_7(self):
         self._task_7a()
         self._task_7b()
 
     def _task_7a(self):
+        print()
         print(
             "Task 7a -  Find the number of users that have started an activity in one day and ended the activity the next day:")
         self.cursor.execute("""
@@ -158,11 +145,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(f"{results[0][0]} people started an activity and ended it on another day.")
-        print()
-
-        return results
 
     def _task_7b(self):
+        print()
         print("Task 7b - List the transportation mode, user id and duration for these activities")
         self.cursor.execute("""
             SELECT 
@@ -176,15 +161,12 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "transportation_mode", "actity_duration"]))
-        print()
-
-        return results
 
     def task_8(self):
+        print()
         print("Task 8 - Find the number of users which have been close to each other in time and space.\n"
               "Close is defined as the same space (50 meters) and for the same half minute (30"
               "seconds)")
-
         self.cursor.execute("""
         SELECT user.id, date, lat,lon FROM trackpoint
         INNER JOIN activity
@@ -196,8 +178,6 @@ class Queries:
         """)
 
         sorted_trackpoints = self.cursor.fetchall()
-
-        print("query done")
 
         meetups = []
         for i in range(len(sorted_trackpoints)):
@@ -235,6 +215,7 @@ class Queries:
         print(f"{len(dic)} users have been close to each other at some point.")
 
     def task_9(self):
+        print()
         print("Task 9 - Top 15 users who have gained the most altitude:")
         self.cursor.execute("""
         SELECT
@@ -262,11 +243,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "altitude_gain"], floatfmt=("", ".0f")))
-        print()
-
-        return results
 
     def task_10(self):
+        print()
         print(
             "Task 10 - Find the users that have traveled the longest total distance in one day for each transportation mode:")
         self.cursor.execute("""
@@ -311,11 +290,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "transportation_mode", "max_distance"]))
-        print()
-
-        return results
 
     def task_11(self):
+        print()
         print("Task 11 -  Find all users who have invalid activities, and the number of invalid activities per user:")
         self.cursor.execute("""
         WITH InvalidActivities AS (
@@ -343,9 +320,9 @@ class Queries:
         results = self.cursor.fetchall()
 
         print(tabulate([*results], headers=["user_id", "invalid_activity_count"]))
-        print()
 
     def task_12(self):
+        print()
         print(
             "Task 12 - Find all users who have registered transportation_mode and their most used transportation_mode:")
 

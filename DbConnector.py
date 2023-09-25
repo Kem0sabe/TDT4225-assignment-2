@@ -1,5 +1,6 @@
 import mysql.connector as mysql
 
+
 class DbConnector:
     def __init__(self,
                  HOST='localhost',
