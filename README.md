@@ -28,7 +28,7 @@ We use a Makefile for automating various tasks like setting up the virtual envir
 
 To run the entire setup and start all services:
 ```bash
-make start
+make setup
 ```
 
 ### Running Queries After Initial Setup
