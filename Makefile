@@ -40,22 +40,21 @@ install: create-env ## Install project requirements
 	$(VENV_NAME)/bin/pip3 install -r requirements.txt
 
 # Tear down the Docker containers
-down: ## Tear down Docker containers
+down: remove-env ## Tear down Docker containers
 	@echo "Tearing down the Docker containers..."
 	docker-compose down
 
-# Run setup using main.py
-setup: create-env ## Run the setup script
-	@echo "Running setup..."
+# Run init using main.py
+init_env_and_db: create-env ## Run the init script
+	@echo "Running init..."
 	$(VENV_NAME)/bin/python3 DbMaker.py
-	@echo "Setup completed."
+	@echo "Init completed."
 
 # Start all services
-start: db ## Start all services
+setup: db ## Start all services
 	@echo "Pausing for the database to initialize..."
 	sleep 10
-	$(MAKE) install
-	$(MAKE) setup
+	$(MAKE) init_env_and_db
 	@echo "Starting all services..."
 
 # List all available make commands
