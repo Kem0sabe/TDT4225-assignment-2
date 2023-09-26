@@ -45,16 +45,16 @@ down: remove-env ## Tear down Docker containers
 	docker-compose down
 
 # Run init using main.py
-init_env_and_db: create-env ## Run the init script
+init_db: create-env ## Run the init script
 	@echo "Running init..."
 	$(VENV_NAME)/bin/python3 DbMaker.py
 	@echo "Init completed."
 
 # Start all services
-setup: db ## Start all services
+setup: db create-env ## Start all services
 	@echo "Pausing for the database to initialize..."
 	sleep 10
-	$(MAKE) init_env_and_db
+	$(MAKE) init_db
 	@echo "Starting all services..."
 
 # List all available make commands
