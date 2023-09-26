@@ -35,7 +35,7 @@ db: ## Start the database using Docker Compose
 	docker-compose up -d
 
 # Install project requirements into virtual environment
-install: create-env ## Install project requirements
+pip_install: create-env ## Install project requirements
 	@echo "Installing project requirements..."
 	$(VENV_NAME)/bin/pip3 install -r requirements.txt
 
@@ -51,7 +51,7 @@ init_db: create-env ## Run the init script
 	@echo "Init completed."
 
 # Start all services
-setup: db create-env ## Start all services
+setup: db pip_install ## Start all services
 	@echo "Pausing for the database to initialize..."
 	sleep 10
 	$(MAKE) init_db
