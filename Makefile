@@ -50,7 +50,8 @@ db: ## Start the database using Docker Compose
 # Install project requirements into virtual environment
 pip_install: create-env ## Install project requirements
 	@echo "Installing project requirements..."
-	$(VENV_NAME)/bin/pip3 install -r requirements.txt
+	@echo "Using pip path: $(PIP)"
+	$(PIP) install -r requirements.txt
 
 # Tear down the Docker containers
 down: remove-env ## Tear down Docker containers
