@@ -19,8 +19,18 @@ create-env: ## Create a Python virtual environment
 	@echo "Creating virtual environment..."
 	test -d $(VENV_NAME) || python3 -m venv $(VENV_NAME)
 
+# Cleanup
+clean: ## Remove all .pyc, .pyo files and __pycache__ directories
+	ifeq ($(SYSTEM),Windows_NT)
+		@echo "Removing byte-compiled python files..."
+		if exist "__pycache__" rd /s /q "__pycache__"
+	else
+		@echo "Removing byte-compiled python files..."
+		rm -rf __pycache__
+	endif
+
 # Remove the Python virtual environment
-remove-env: ## Remove the Python virtual environment
+remove-env: clean ## Remove the Python virtual environment
 	@echo "Removing virtual environment..."
 	rm -rf $(VENV_NAME)
 
