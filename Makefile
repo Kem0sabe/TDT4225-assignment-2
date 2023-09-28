@@ -22,11 +22,6 @@ create-env: ## Create a Python virtual environment
 	@echo "Creating virtual environment..."
 	test -d $(VENV_NAME) || python3 -m venv $(VENV_NAME)
 
-# Upgrade pip in virtual environment
-upgrade-pip: create-env ## Upgrade pip in virtual environment
-	@echo "Upgrading pip..."
-	$(PIP) install --upgrade pip
-
 # Cleanup
 clean: ## Remove __pycache__ directory
 ifeq ($(SYSTEM),Windows_NT)
@@ -53,7 +48,7 @@ db: ## Start the database using Docker Compose
 	docker-compose up -d
 
 # Install project requirements into virtual environment
-pip_install: upgrade-pip ## Install project requirements
+pip_install: create-env ## Install project requirements
 	@echo "Installing project requirements..."
 	@echo "Using pip path: $(PIP)"
 	$(PIP) install -r requirements.txt
