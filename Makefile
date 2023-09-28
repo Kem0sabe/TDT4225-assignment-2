@@ -1,5 +1,8 @@
 # Makefile for managing project tasks
 
+# List of phony targets
+.PHONY: create-env clean remove-env queries db pip_install down init_db setup help
+
 VENV_NAME=myenv
 
 ifeq ($(OS),Windows_NT)
@@ -20,7 +23,7 @@ create-env: ## Create a Python virtual environment
 	test -d $(VENV_NAME) || python3 -m venv $(VENV_NAME)
 
 # Cleanup
-clean: ## Remove all .pyc, .pyo files and __pycache__ directories
+clean: ## Remove __pycache__ directory
 	ifeq ($(SYSTEM),Windows_NT)
 		@echo "Removing byte-compiled python files..."
 		if exist "__pycache__" rd /s /q "__pycache__"
