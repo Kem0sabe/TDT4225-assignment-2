@@ -26,6 +26,8 @@ cd TDT4225-project1
 ### Run Setup and Start Services
 We use a Makefile for automating various tasks like setting up the virtual environment, starting the database, and running the queries.
 
+Before proceeding, ensure that Docker is up and running.
+
 To run the entire setup and start all services:
 ```bash
 make setup
