@@ -38,6 +38,12 @@ make queries
 ```
 Note: The initial setup must be completed before running queries.
 
+### Shutting Down and Cleanup
+To shut down the generated Docker container and remove any automatically generated Python files, use:
+```bash
+make down
+```
+
 ## Tasks
 - Part 1: Data Cleaning and Insertion
 - Part 2: Queries and Analysis
