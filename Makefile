@@ -24,13 +24,8 @@ create-env: ## Create a Python virtual environment
 
 # Cleanup
 clean: ## Remove __pycache__ directory
-ifeq ($(SYSTEM),Windows_NT)
-	@echo "Removing byte-compiled python files..."
-	if exist "__pycache__" rd /s /q "__pycache__"
-else
 	@echo "Removing byte-compiled python files..."
 	rm -rf __pycache__
-endif
 
 # Remove the Python virtual environment
 remove-env: clean ## Remove the Python virtual environment
