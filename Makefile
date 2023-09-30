@@ -40,7 +40,7 @@ remove-env: clean ## Remove the Python virtual environment
 # Run main.py
 queries: ## Run the queries
 	@echo "Running main.py..."
-	$(VENV_NAME)/bin/python3 main.py
+	$(PYTHON) main.py
 
 # Start the database using Docker Compose
 db: ## Start the database using Docker Compose
@@ -50,7 +50,7 @@ db: ## Start the database using Docker Compose
 # Install project requirements into virtual environment
 pip_install: create-env ## Install project requirements
 	@echo "Installing project requirements..."
-	$(VENV_NAME)/bin/pip3 install -r requirements.txt
+	$(PIP) install -r requirements.txt
 
 # Tear down the Docker containers
 down: remove-env ## Tear down Docker containers
@@ -60,7 +60,7 @@ down: remove-env ## Tear down Docker containers
 # Run init using main.py
 init_db: create-env ## Run the init script
 	@echo "Running init..."
-	$(VENV_NAME)/bin/python3 DbMaker.py
+	$(PYTHON) DbMaker.py
 	@echo "Init completed."
 
 # Start all services
