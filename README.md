@@ -20,7 +20,7 @@ git clone https://github.com/Kem0sabe/TDT4225-assigment-2.git
 
 ### Navigate to Project Directory
 ```bash
-cd TDT4225-project1
+cd TDT4225-assigment-2
 ```
 
 ### Run Setup and Start Services
@@ -51,7 +51,7 @@ make down
 - Part 2: Queries and Analysis
 - Part 3: Report
 
-For more details on each part and the tasks involved, please refer to the [assignment PDF]([http://example.com/path/to/your/assignment.pdf](https://github.com/Kem0sabe/TDT4225-project1/blob/main/Assignment-2-2023.pdf)).
+For more details on each part and the tasks involved, please refer to the [assignment PDF]([http://example.com/path/to/your/assignment.pdf](https://github.com/Kem0sabe/TDT4225-assignment-2/blob/main/Assignment-2-2023.pdf)).
 
 
 
