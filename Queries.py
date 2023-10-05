@@ -139,7 +139,7 @@ class Queries:
             SELECT 
                 COUNT(DISTINCT user_id) 
             FROM activity
-            WHERE DATE(start_date_time) != DATE(end_date_time) AND transportation_mode IS NOT NULL;
+            WHERE DATE(start_date_time) != DATE(end_date_time);
         """)
 
         results = self.cursor.fetchall()
