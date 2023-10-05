@@ -6,6 +6,7 @@ This repository contains the code and resources for Assignment 2 of the TDT4225 
 ## Prerequisites
 
 ### Software
+- python
 - make
 - docker
 
