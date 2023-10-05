@@ -15,7 +15,7 @@ This repository contains the code and resources for Assignment 2 of the TDT4225 
 ## Getting started
 ### Clone the Repository
 ```bash
-git clone https://github.com/Kem0sabe/TDT4225-project1.git
+git clone https://github.com/Kem0sabe/TDT4225-assigment-2.git
 ```
 
 ### Navigate to Project Directory
