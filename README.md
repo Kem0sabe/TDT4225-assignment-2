@@ -15,12 +15,12 @@ This repository contains the code and resources for Assignment 2 of the TDT4225 
 ## Getting started
 ### Clone the Repository
 ```bash
-git clone https://github.com/Kem0sabe/TDT4225-assigment-2.git
+git clone https://github.com/Kem0sabe/TDT4225-assignment-2.git
 ```
 
 ### Navigate to Project Directory
 ```bash
-cd TDT4225-assigment-2
+cd TDT4225-assignment-2
 ```
 
 ### Run Setup and Start Services
